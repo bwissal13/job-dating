@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\AnnouncementsController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Announcements;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,3 +33,4 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 Route::resource('companies',CompanyController::class);
+Route::resource('announcements',AnnouncementsController::class);
