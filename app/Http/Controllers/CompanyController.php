@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CompanyRequest;
 use App\Models\Company;
 use App\Http\Requests\StoreCompanyRequest;
 use App\Http\Requests\UpdateCompanyRequest;
@@ -32,15 +33,10 @@ class CompanyController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CompanyRequest $request)
     {
         
-        $request->validate([
-            'name'=>'required|string',
-            'domain'=>'required|string',
-            'contact'=>'required|string',
-    
-        ]);
+      
         
         Company::create($request->all());
          
@@ -68,15 +64,10 @@ class CompanyController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Company $Company)
+    public function update(CompanyRequest $request, Company $Company)
     {
         
-        $request->validate([
-            'name'=>'required|string',
-            'domain'=>'required|string',
-            'contact'=>'required|string',
-    
-        ]);
+     
         
         $Company->update($request->all());
         
