@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AnnouncementRequest;
 use App\Models\Announcements;
 use App\Http\Requests\StoreAnnouncementsRequest;
 use App\Http\Requests\UpdateAnnouncementsRequest;
 use App\Models\Company;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AnnouncementsController extends Controller
@@ -15,11 +17,14 @@ class AnnouncementsController extends Controller
      */
     public function index()
     {
+        $companies = Company::all();
+        $users=User::all();
         $announcements= Announcements::latest()->paginate(5);
-        return view('announcements.index',compact('announcements'))
+        return view('announcements.index',compact('announcements', 'companies','users'))
                     ->with('i',(request()->input('page',1) - 1 ) * 5);
     }
-
+   
+    
     /**
      * Show the form for creating a new resource.
      */
@@ -32,15 +37,11 @@ class AnnouncementsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(AnnouncementRequest $request)
     {
         $companies = Company::all();
-        $request->validate([
-            'title'=>'required|string',
-            'description'=>'required|string',
-            'date'=>'required|date',
-            'company_id' => 'required|exists:companies,id', // Make sure the selected company exists
-        ]);
+        $users=User::all();
+       
         Announcements::create($request->all());
 
         return redirect()->route('announcements.create')
@@ -55,7 +56,9 @@ class AnnouncementsController extends Controller
      */
     public function show(Announcements $announcement)
     {
-     return view('announcements.show',compact('announcement'));
+        $companies= Company::all();
+        $users = Company::all();
+     return view('announcements.show',compact('announcement','companies','users'));
     }
 
     /**
@@ -63,19 +66,17 @@ class AnnouncementsController extends Controller
      */
     public function edit(Announcements $announcement)
     {
-      return view('announcements.edit',compact('announcement'));
+        $companies= Company::all();
+        $users = Company::all();
+      return view('announcements.edit',compact('announcement','companies','users'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Announcements $announcement)
+    public function update(AnnouncementRequest $request, Announcements $announcement)
     {
-        $request->validate([
-            'title'=>'required|string',
-            'description'=>'required|string',
-            'date'=>'required|date',
-        ]);
+    
         $announcement->update($request->all());
         return redirect()->route('announcements.index')
                             ->with('success','Announcement updated successfully');
@@ -87,7 +88,7 @@ class AnnouncementsController extends Controller
     public function destroy(Announcements $announcement)
     {
         $announcement->delete();
-        return redirect()->routr('announcements.index')
+        return redirect()->route('announcements.index')
         ->with('success','Announcemment deleted successfully' );
     }
 }
