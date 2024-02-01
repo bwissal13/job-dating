@@ -43,12 +43,12 @@
     </style>
 </head>
 <body>
-    <nav>
+    {{-- <nav>
         <ul>
             <li><a href="/">Home</a></li>
             <li><a href="/companies">companies</a></li>
         </ul>
-    </nav>
+    </nav> --}}
 
     @yield('content')
 </body>

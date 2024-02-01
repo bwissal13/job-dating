@@ -1,18 +1,34 @@
 
-@extends('announcements.layout')
+@extends('companies.layout')
 @section('content')
+<x-app-layout style='background-color:#DDECF2'>
+    <x-slot name="header" >
+        <h2 class="font-semibold text-xl leading-tight">
+            {{ __('Announcement') }}
+        </h2>
+    </x-slot>
     <div class="row">
         <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
+            {{-- <div class="pull-left">
                 <h2>Test view</h2>
-            </div>
+            </div> --}}
+            <style>
+                .custom-button-color {
+                    background-color: #B89A55;
+                }
+            
+                .custom-button-color:hover {
+                    background-color: #A98346;
+                }
+            </style>
+            
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('announcements.create') }}"> Create New Company</a>
+                <a class="btn custom-button-color text-white" href="{{ route('announcements.create') }}">Create New Announcement</a>
             </div>
+            
         </div>
     </div>
-   
-    {{-- @if ($message = Session::get('success'))
+    @if ($message = Session::get('success'))
         <div class="alert alert-success">
             <p>{{ $message }}</p>
         </div>
@@ -21,23 +37,40 @@
     <table class="table table-bordered">
         <tr>
             <th>No</th>
-            <th>tit</th>
-            <th>Domain</th>
-            <th>Contact</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Company</th>
+            <th>User</th>
             <th width="280px">Action</th>
         </tr>
-        @foreach ($companies as $company)
+        
+        @foreach ($announcements as $announcement)
         <tr>
             <td>{{ ++$i }}</td>
-            <td>{{ $company->name }}</td>
-            <td>{{ $company->domain }}</td>
-            <td>{{ $company->contact }}</td>
+            <td>{{ $announcement->title }}</td>
+            <td>{{ $announcement->description}}</td>
+            <td>{{ $announcement->date }}</td>
             <td>
-                <form action="{{ route('companies.destroy',$company->id) }}" method="POST">
+                @foreach($companies as $company)
+                    @if($company->id == $announcement->company_id)
+                        {{ $company->name }}
+                    @endif
+                @endforeach
+            </td>
+            <td>
+                @foreach($users as $user)
+                @if($user->id == $announcement->user_id)
+                {{$user->name}}
+                @endif
+                @endforeach
+            </td>
+            <td>
+                <form action="{{ route('announcements.destroy',$announcement->id) }}" method="POST">
    
-                    <a class="btn btn-info" href="{{ route('companies.show',$company->id) }}">Show</a>
+                    <a class="btn btn-info" href="{{ route('announcements.show',$announcement->id) }}">Show</a>
     
-                    <a class="btn btn-primary" href="{{ route('companies.edit',$company->id) }}">Edit</a>
+                    <a class="btn btn-primary" href="{{ route('announcements.edit',$announcement->id) }}">Edit</a>
    
                     @csrf
                     @method('DELETE')
@@ -49,15 +82,15 @@
         @endforeach
     </table>
   
-    {!! $companies->links() !!} --}}
+    {!! $announcements->links() !!} 
       
-{{-- <div class="row">
+ {{-- <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
             <h2>Add New Announcement</h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('companies.index') }}"> Back</a>
+            <a class="btn btn-primary" href="{{ route('announcements.index') }}"> Back</a>
         </div>
     </div>
 </div> --}}
@@ -73,5 +106,5 @@
     </div>
 @endif
    
-
+</x-app-layout>
 @endsection

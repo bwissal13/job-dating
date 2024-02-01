@@ -1,14 +1,32 @@
 
 @extends('Companies.layout')
 @section('content')
+
+<x-app-layout style='background-color:#DDECF2'>
+    <x-slot name="header" >
+        <h2 class="font-semibold text-xl leading-tight">
+            {{ __('Company') }}
+        </h2>
+    </x-slot>
     <div class="row">
         <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
+            {{-- <div class="pull-left">
                 <h2>Test view</h2>
-            </div>
+            </div> --}}
+            <style>
+                .custom-button-color {
+                    background-color: #B89A55;
+                }
+            
+                .custom-button-color:hover {
+                    background-color: #A98346;
+                }
+            </style>
+            
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('companies.create') }}"> Create New Company</a>
+                <a class="btn custom-button-color text-white" href="{{ route('companies.create') }}">Create New Company</a>
             </div>
+            
         </div>
     </div>
    
@@ -51,7 +69,7 @@
   
     {!! $companies->links() !!}
       
-<div class="row">
+{{-- <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
             <h2>Add New Company</h2>
@@ -60,7 +78,7 @@
             <a class="btn btn-primary" href="{{ route('companies.index') }}"> Back</a>
         </div>
     </div>
-</div>
+</div> --}}
    
 @if ($errors->any())
     <div class="alert alert-danger">
@@ -74,4 +92,6 @@
 @endif
    
 
+
+</x-app-layout>
 @endsection

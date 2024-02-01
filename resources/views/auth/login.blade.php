@@ -4,11 +4,19 @@
 
     <form method="POST" action="{{ route('login') }}">
         @csrf
-
+        <style>
+            .custom-border-color {
+                border-color: #459AB3;
+            }
+        
+            .custom-border-color:focus {
+                border-color: #2D749E; /* Change the color for the focus state */
+            }
+        </style>
         <!-- Email Address -->
         <div>
             <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
+            <x-text-input id="email" class="block mt-1 w-full border custom-border-color focus:outline-none focus:ring focus:border-custom-border-focus" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
@@ -16,7 +24,7 @@
         <div class="mt-4">
             <x-input-label for="password" :value="__('Password')" />
 
-            <x-text-input id="password" class="block mt-1 w-full"
+            <x-text-input id="password" class="block mt-1 w-full border custom-border-color focus:outline-none focus:ring focus:border-custom-border-focus"
                             type="password"
                             name="password"
                             required autocomplete="current-password" />
@@ -39,9 +47,20 @@
                 </a>
             @endif
 
-            <x-primary-button class="ms-3">
+            <x-primary-button class="ms-3 mt-4 custom-button-color text-white">
                 {{ __('Log in') }}
             </x-primary-button>
+            <style>
+                .custom-button-color {
+                    background-color: #B89A55;
+                }
+            
+                .custom-button-color:hover {
+                    background-color: #A98346; 
+                }
+            </style>
+            
+            
         </div>
     </form>
 </x-guest-layout>
