@@ -12,7 +12,7 @@ class Company extends Model
         "name","domain","contact",
     ];
     public function announcements(){
-        return $this->hasMany(Company::class);
+        return $this->hasMany(Announcements::class, 'company_id','id');
     }
     use HasFactory;
 }
