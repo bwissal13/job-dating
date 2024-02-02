@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Company extends Model
 {
@@ -14,5 +15,5 @@ class Company extends Model
     public function announcements(){
         return $this->hasMany(Announcements::class, 'company_id','id');
     }
-    use HasFactory;
+    use HasFactory,SoftDeletes;
 }
