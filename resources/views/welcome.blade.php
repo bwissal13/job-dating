@@ -1,4 +1,4 @@
-<!-- resources/views/welcome.blade.php -->
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,10 +14,10 @@
             height: 125vh;
         }
     </style>
-    <title>Your Title</title>
+    <title>WorkQuilt</title>
 </head>
 <body>
-    <!-- Blade directives for asset and route helpers -->
+   
     @if (Route::has('login'))
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
@@ -224,9 +224,9 @@
                 <div class="text-center mt-2">Name</div>
                 <div class="text-center mt-2">Domain</div>
               </div>
-              <!-- Repeat this block for each card (total of 5 per line) -->
+            
             </div>
-            <!-- Repeat the row for a total of 3 lines -->
+           
           </div>
         </div>
       </section>
