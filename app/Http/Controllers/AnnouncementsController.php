@@ -44,6 +44,11 @@ class AnnouncementsController extends Controller
        
         Announcements::create($request->all());
 
+        // Validate the request using the AnnouncementRequest
+        // $validatedData = $request->validated();
+        // Create an announcement using the validated data
+        // Announcements::create($validatedData);
+    
         return redirect()->route('announcements.create')
                             ->with('success','Announcement created successfully.');
     }
