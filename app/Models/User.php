@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Symfony\Component\HttpKernel\Profiler\Profile;
 
 class User extends Authenticatable
 {
@@ -48,9 +49,17 @@ class User extends Authenticatable
     {
         return $this->hasMany(Application::class);
     }
+    
 
     public function skills()
     {
         return $this->belongsToMany(Skill::class, 'skills_users');
     }
+    
+    public function student()
+    {
+        return $this->hasOne(Student::class);
+    }
+   
 }
+
