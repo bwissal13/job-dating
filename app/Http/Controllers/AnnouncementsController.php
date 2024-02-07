@@ -7,6 +7,7 @@ use App\Models\Announcements;
 use App\Http\Requests\StoreAnnouncementsRequest;
 use App\Http\Requests\UpdateAnnouncementsRequest;
 use App\Models\Company;
+use App\Models\Skill;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -30,8 +31,10 @@ class AnnouncementsController extends Controller
      */
     public function create()
     {
+        
+        $skills = Skill::all();
         $companies = Company::all();
-        return view('announcements.create', compact('companies'));
+        return view('announcements.create', compact('companies','skills'));
     }
 
     /**
@@ -42,8 +45,8 @@ class AnnouncementsController extends Controller
         $companies = Company::all();
         $users=User::all();
        
-        Announcements::create($request->all());
-
+        $announcement= Announcements::create($request->all());
+        $announcement->skills()->attach($request->input('skills'));
         // Validate the request using the AnnouncementRequest
         // $validatedData = $request->validated();
         // Create an announcement using the validated data
@@ -62,7 +65,7 @@ class AnnouncementsController extends Controller
     public function show(Announcements $announcement)
     {
         $companies= Company::all();
-        $users = Company::all();
+        $users = User::all();
      return view('announcements.show',compact('announcement','companies','users'));
     }
 
@@ -72,7 +75,7 @@ class AnnouncementsController extends Controller
     public function edit(Announcements $announcement)
     {
         $companies= Company::all();
-        $users = Company::all();
+        $users = User::all();
       return view('announcements.edit',compact('announcement','companies','users'));
     }
 

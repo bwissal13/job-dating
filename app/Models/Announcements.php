@@ -20,11 +20,11 @@ class Announcements extends Model
     {
         return $this->hasMany(Application::class);
     }
-
+    
     public function skills()
     {
-        return $this->belongsToMany(Skill::class, 'skills_announcements');
-    }
+        return $this->belongsToMany(Skill::class, 'skills_announcements', 'announcement_id', 'skill_id');
 
+    }
     use HasFactory,SoftDeletes;
 }
