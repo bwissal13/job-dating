@@ -5,6 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/css/tom-select.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
     <title>hi</title>
@@ -52,4 +53,18 @@
 
     @yield('content')
 </body>
+<!-- Include TomSelect (without jQuery) -->
+<script src="https://cdn.jsdelivr.net/npm/tom-select/dist/js/tom-select.complete.min.js"></script>
+
+<!-- Include jQuery separately, after TomSelect -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Initialize TomSelect -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    new TomSelect('#select-skill', {
+      maxItems: 3,
+    });
+  });
+</script>
 </html>

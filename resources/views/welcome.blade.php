@@ -173,64 +173,7 @@
           />
         </div>
       </div>
-    </section>
-    <section>
-        <div
-          style="
-            left: 535px;
-            top: 741px;
-            position: absolute;
-            color: #459ab3;
-            font-size: 40px;
-            font-family: Abril Fatface;
-            font-weight: 400;
-            word-wrap: break-word;
-          "
-        >
-          Browse by Company
-        </div>
-        <div
-          style="
-            width: 1187px;
-            height: 271px;
-            left: 116px;
-            top: 833px;
-            position: absolute;
-          "
-        >
-          <div class="container">
-            <div class="row">
-              <div
-                class=""
-                style="
-                  width: 215px;
-                  height: 69px;
-                  border-radius: 22px;
-                  border: 1px #b89a55 solid;
-                "
-              >
-                <div class="text-center mt-2">Name</div>
-                <div class="text-center mt-2">Domain</div>
-              </div>
-              <div
-                class=""
-                style="
-                  width: 215px;
-                  height: 69px;
-                  border-radius: 22px;
-                  border: 1px #b89a55 solid;
-                "
-              >
-                <div class="text-center mt-2">Name</div>
-                <div class="text-center mt-2">Domain</div>
-              </div>
-            
-            </div>
-           
-          </div>
-        </div>
-      </section>
-
+   
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

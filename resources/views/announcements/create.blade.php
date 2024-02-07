@@ -69,6 +69,25 @@
                 </select>
             </div>
         </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <label for="skill">Skill</label>
+                    <select
+                    id="select-skill"
+                    name="skills[]"
+                    multiple
+                    placeholder="Select skills..."
+                    autocomplete="off"
+                    class="block mt-1 w-full border custom-border-color focus:outline-none focus:ring focus:border-custom-border-focus "
+                >
+                    @foreach ($skills as $skill)
+                        <option value="{{ $skill->id }}">{{ $skill->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+         </div>
+    
+        
         
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
@@ -92,4 +111,7 @@
    
 </form>
 </x-guest-layout>
+
+
+
 @endsection
