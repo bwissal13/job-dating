@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Symfony\Component\HttpKernel\Profiler\Profile;
 
 class Skill extends Model
 {
@@ -20,4 +21,6 @@ class Skill extends Model
     {
         return $this->belongsToMany(Announcements::class, 'skills_announcements');
     }
+  
+
 }

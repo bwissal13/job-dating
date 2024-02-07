@@ -14,7 +14,7 @@ class SkillController extends Controller
      */
     public function index()
     {
-        $skills = Skill::all();
+        $skills = Skill::latest()->paginate(5);
         return view('skills.index', compact('skills'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
     }
