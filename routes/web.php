@@ -1,9 +1,14 @@
 <?php
 
 use App\Http\Controllers\AnnouncementsController;
+use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SkillController;
+use App\Http\Controllers\StatisticController;
+use App\Http\Controllers\StudentController;
 use App\Models\Announcements;
+use App\Models\Skill;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,3 +39,8 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 Route::resource('companies',CompanyController::class);
 Route::resource('announcements',AnnouncementsController::class);
+Route::resource('skills',SkillController::class);
+Route::resource('students',StudentController::class);
+Route::resource('applications',ApplicationController::class);
+Route::resource('statistics',StatisticController::class);
+// Route::get('/applications/create/{announcement_id}', 'ApplicationController@create')->name('applications.create');
